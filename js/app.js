@@ -9,10 +9,17 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            templateUrl: 'partials/home.html'
+            templateUrl: 'partials/home.html',
+			controller: 'homeController'
         })
+		
+		.state('search', {
+			url: '/search/:searchTerm',
+			templateUrl: 'partials/search.html',
+			controller: 'searchController'
+		});
         
-        // nested list with custom controller
+		/*// nested list with custom controller
         .state('home.list', {
             url: '/list',
             templateUrl: 'partials/home-list.html',
@@ -25,9 +32,9 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         .state('home.paragraph', {
             url: '/paragraph',
             template: 'I could sure use a drink right now.'
-        })
+        })*/
         
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+/*        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('about', {
             url: '/about',
             views: {
@@ -37,29 +44,8 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                     templateUrl: 'partials/table-data.html',
                     controller: 'scotchController'
                 }
-            }
-            
-        });
+            }            
+        });*/
         
 });
 
-routerApp.controller('scotchController', function($scope) {
-    
-    $scope.message = 'test';
-   
-    $scope.scotches = [
-        {
-            name: 'Macallan 12',
-            price: 50
-        },
-        {
-            name: 'Chivas Regal Royal Salute',
-            price: 10000
-        },
-        {
-            name: 'Glenfiddich 1937',
-            price: 20000
-        }
-    ];
-    
-});
