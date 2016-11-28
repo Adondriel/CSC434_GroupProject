@@ -9,10 +9,12 @@ require 'functions.php';
 session_name('tzLogin');
 // Starting the session
 
-session_set_cookie_params(2*7*24*60*60);
-// Making the cookie live for 2 weeks
+session_set_cookie_params(30*60, '/');
+// Making the cookie live for 30 mins
 
 session_start();
+/*
+
 if(isset($_SESSION)){
 	if(isset($_SESSION['userId']) && !isset($_COOKIE['tzRemember']) && !$_SESSION['rememberMe'])
 	{
@@ -25,13 +27,19 @@ if(isset($_SESSION)){
 	// Destroy the session
 	}
 }
+*/
 
 
-if(isset($_GET['logoff']))
+if(isset($_GET['logout']) && $_GET['logout']==true)
 {
-	$_SESSION = array();
+	//echo "LOGOUT TRUE";
+	
+	session_unset();
 	session_destroy();
-	header("Location: index.php");
+	session_write_close();
+	setcookie(session_name(),'',0,'/');
+	session_regenerate_id(true);
+	//header("Location: ");
 	exit;
 }
 

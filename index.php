@@ -1,5 +1,5 @@
 <?php 
-	include("php/login.php");
+	require_once("php/login.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,12 +52,12 @@
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Will add a conditional item here that will determine whether or not they are logged in, if so, will show diff buttons.-->
 				<?php 
-					if(isset($_SESSION['userId'])):
+					if(isset($_SESSION['userId']) && $_SESSION['userId']>=1):
 				?>
 				<li><a ui-sref="login">Login</a></li>
 				<li><a ui-sref="register">Register</a></li>
 				<?php else: ?>
-				<li><a ng-href="php/logout.php">Logout</a></li>
+				<li><a href="javascript:Logout();" on-click="Logout();">Logout</a></li>
 				<li><a ui-sref="wishlist">Wishlist</a></li>
 				<li><a ui-sref="account">My Account</a></li>
 				<?php endif ?>
@@ -79,5 +79,16 @@
 		<div ui-view></div>
 	</div>
 </body>
+
+<footer>
+<script type="application/javascript">
+	function Logout(){
+		$.ajax({
+			url: 'index.php?logout=true',
+			type: 'GET'
+		});
+	}
+</script>	
+</footer>
 
 </html>
