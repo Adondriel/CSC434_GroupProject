@@ -9,12 +9,15 @@ require 'functions.php';
 session_name('tzLogin');
 // Starting the session
 
-session_set_cookie_params(60, '/');
+session_set_cookie_params(30*60, '/');
 // Making the cookie live for 30 mins
 
 session_start();
+		
+$link = get_MySQLi_Connection();
 
-	if($_SESSION['userId'] && !isset($_COOKIE['tzRemember']) && !$_SESSION['rememberMe'])
+
+if(isset($_SESSION['userId']) && $_SESSION['userId'] && !isset($_COOKIE['tzRemember']) && !$_SESSION['rememberMe'])
 	{
 	// If you are logged in, but you don't have the tzRemember cookie (browser restart)
 	// and you have not checked the rememberMe checkbox:
@@ -54,17 +57,16 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 
 	if(!count($err))
 	{
-		$link = get_MySQLi_Connection();
 		
-		$_POST['username'] = $link::real_escape_string($_POST['username']);
-		$_POST['password'] = $link::real_escape_string($_POST['password']);
+		$_POST['username'] = mysqli_real_escape_string($link, $_POST['username']);
+		$_POST['password'] = mysqli_real_escape_string($link, $_POST['password']);
 		$_POST['rememberMe'] = (int)$_POST['rememberMe'];
 
 		// Escaping all input data
 		$result = $link->query("SELECT userId, userName, userLevel FROM User WHERE userName='{$_POST['username']}' AND password='".md5($_POST['password'])."'");
-		$row = $result::fetch_assoc();
+		$row = mysqli_fetch_assoc($result);
 
-		if($row['username'])
+		if($row['userName'])
 		{
 			// If everything is OK login
 
@@ -108,7 +110,6 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 
 	if(!count($err))
 	{
-		$link = get_MySQLi_Connection();
 		// If there are no errors
 		//$pass = substr(md5($_SERVER['REMOTE_ADDR'].microtime().rand(1,100000)),0,6);
 		// Generate a random password

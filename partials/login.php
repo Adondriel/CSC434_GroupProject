@@ -4,7 +4,7 @@
 <h1>Member Login</h1>
 
 <?php
-if($_SESSION['msg']['login-err'])
+if(isset($_SESSION['msg']['login-err']) && $_SESSION['msg']['login-err'])
 {
 	echo '<div class="err">'.$_SESSION['msg']['login-err'].'</div>';
 	unset($_SESSION['msg']['login-err']);
