@@ -3,11 +3,11 @@
 function get_Connection(){
     //set the vars to connect to the database.
     //use 127.0.0.1 instead of localhost because localhost makes my local mysql take ~15-30 seconds to respond.
-    $servername = "127.0.0.1";
-    $username = "adamunbh_csc434";
-    $password = "ThisAccountWillBeDeleted";
+    $servername = "webprog.cs.ship.edu";
+    $username = "webprog26";
+    $password = "bilimeko";
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=adamunbh_csc434", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=webprog26", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
@@ -21,11 +21,11 @@ function get_Connection(){
 function get_MySQLi_Connection(){
     //set the vars to connect to the database.
     //use 127.0.0.1 instead of localhost because localhost makes my local mysql take ~15-30 seconds to respond.
-    $servername = "127.0.0.1";
-    $username = "adamunbh_csc434";
-    $password = "ThisAccountWillBeDeleted";
+    $servername = "webprog.cs.ship.edu";
+    $username = "webprog26";
+    $password = "bilimeko";
     // Create connection
-    $conn = new mysqli($servername, $username, $password, "adamunbh_csc434");
+    $conn = new mysqli($servername, $username, $password, "webprog26");
 
     // Check connection
     if ($conn->connect_error) {

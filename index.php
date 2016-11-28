@@ -1,3 +1,6 @@
+<?php 
+	include("php/login.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -21,9 +24,11 @@
 	<script src="js/home.controller.js"></script>
 	<script src="js/search.controller.js"></script>
 	<script src="js/login.controller.js"></script>
-	<script type="text/JavaScript" src="js/sha512.js"></script>
+	<script src="js/register.controller.js"></script>
+
+	<!--<script type="text/JavaScript" src="js/sha512.js"></script>
 	<script type="text/JavaScript" src="js/forms.js"></script>
-	<script type="text/JavaScript" src="js/loginCheck.js"></script>
+	<script type="text/JavaScript" src="js/loginCheck.js"></script>-->
 
 
 </head>
@@ -45,12 +50,17 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Will add a conditional item here that will determine whether or not they are logged in, if so, will show diff buttons.-->
-				<li ng-if="loginStatus()==false"><a ui-sref="login">Login</a></li>
-				<li ng-if="loginStatus()==false"><a ui-sref="register">Register</a></li>
-				<li ng-if="loginStatus()==true"><a ng-href="php/logout.php">Logout</a></li>
+				<?php 
+					if(isset($_SESSION['userId'])):
+				?>
+				<li><a ui-sref="login">Login</a></li>
+				<li><a ui-sref="register">Register</a></li>
+				<?php else: ?>
+				<li><a ng-href="php/logout.php">Logout</a></li>
+				<li><a ui-sref="wishlist">Wishlist</a></li>
+				<li><a ui-sref="account">My Account</a></li>
+				<?php endif ?>
 				<li><a ui-sref="cart">Cart</a></li>
-				<li ng-if="loginStatus()==true"><a ui-sref="wishlist">Wishlist</a></li>
-				<li ng-if="loginStatus()==true"><a ui-sref="account">My Account</a></li>
 
 			</ul>
 			<div class="navbar-form navbar-right">

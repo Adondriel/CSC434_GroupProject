@@ -21,9 +21,16 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 		
 		.state('login', {
 			url: '/login',
-			templateUrl: 'partials/login.html',
+			templateUrl: 'partials/login.php',
 			controller: 'loginController'
-		});
+		})
+		
+		.state('register', {
+			url: '/register',
+			templateUrl: 'partials/register.php',
+			controller: 'registerController'
+		})
+		;
         
 		/*// nested list with custom controller
         .state('home.list', {
