@@ -52,15 +52,15 @@
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Will add a conditional item here that will determine whether or not they are logged in, if so, will show diff buttons.-->
 				<?php 
-					if(isset($_SESSION['userId']) && $_SESSION['userId']>=1):
+					if(session_status()<2 && $_SESSION['userId']):
 				?>
 				<li><a ui-sref="login">Login</a></li>
 				<li><a ui-sref="register">Register</a></li>
 				<?php else: ?>
-				<li><a href="javascript:Logout();" on-click="Logout();">Logout</a></li>
+				<li><a href="php/login.php?logout=true">Logout</a></li>
 				<li><a ui-sref="wishlist">Wishlist</a></li>
 				<li><a ui-sref="account">My Account</a></li>
-				<?php endif ?>
+				<?php endif; ?>
 				<li><a ui-sref="cart">Cart</a></li>
 
 			</ul>
@@ -72,10 +72,15 @@
 			</div>
 		</div>
 	</nav>
+			<?php 
+								echo(implode($_SESSION));
+
+		?>
 
 	<!-- MAIN CONTENT -->
 	<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
 	<div class="container">
+
 		<div ui-view></div>
 	</div>
 </body>

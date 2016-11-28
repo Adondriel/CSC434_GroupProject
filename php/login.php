@@ -9,37 +9,36 @@ require 'functions.php';
 session_name('tzLogin');
 // Starting the session
 
-session_set_cookie_params(30*60, '/');
+session_set_cookie_params(60, '/');
 // Making the cookie live for 30 mins
 
 session_start();
-/*
 
-if(isset($_SESSION)){
-	if(isset($_SESSION['userId']) && !isset($_COOKIE['tzRemember']) && !$_SESSION['rememberMe'])
+	if($_SESSION['userId'] && !isset($_COOKIE['tzRemember']) && !$_SESSION['rememberMe'])
 	{
 	// If you are logged in, but you don't have the tzRemember cookie (browser restart)
 	// and you have not checked the rememberMe checkbox:
-
 	$_SESSION = array();
+	session_unset();
 	session_destroy();
-
+	session_write_close();
+	setcookie(session_name(),'',0,'/');
+	//session_regenerate_id(true);
 	// Destroy the session
 	}
-}
-*/
+
 
 
 if(isset($_GET['logout']) && $_GET['logout']==true)
 {
 	//echo "LOGOUT TRUE";
-	
+	$_SESSION = array();
 	session_unset();
 	session_destroy();
 	session_write_close();
 	setcookie(session_name(),'',0,'/');
-	session_regenerate_id(true);
-	//header("Location: ");
+	//session_regenerate_id(true);
+	header("Location: ../index.php");
 	exit;
 }
 
@@ -149,7 +148,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 }
 
 $script = '';
-if($_SESSION['msg'])
+if(isset($_SESSION['msg']))
 {
 	// The script below shows the sliding panel on page load
 	$script = '
