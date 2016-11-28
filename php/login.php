@@ -108,8 +108,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 
 		$_POST['email'] = mysqli_real_escape_string($link, $_POST['email']);
 		$_POST['username'] = mysqli_real_escape_string($link, $_POST['username']);
-		//$_POST['password'] = mysqli_real_escape_string($link, $_POST['username']);
-
+		//we don't escape the password input, because that would mess up the password, once md5'd.
 		// Escape the input data
 
 		$link->query("INSERT INTO User(userName,password,email,userLevel)
@@ -121,7 +120,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 
 		if(mysqli_affected_rows($link)==1)
 		{
-/*			send_mail(
+			/*send_mail(
 					'test@test.com',
 					$_POST['email'],
 					'Registration System Demo - Your New Password',
@@ -137,7 +136,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 		$_SESSION['msg']['reg-err'] = implode('<br />',$err);
 	}
 
-	header("Location: index.php");
+	header("Location: /register.php");
 	exit;
 }
 
