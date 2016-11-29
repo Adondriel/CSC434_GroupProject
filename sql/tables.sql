@@ -1,44 +1,4 @@
-<?php
-//Author: Adam Pine
-function get_Connection(){
-    //set the vars to connect to the database.
-    //use 127.0.0.1 instead of localhost because localhost makes my local mysql take ~15-30 seconds to respond.
-    $servername = "127.0.0.1";
-    $username = "adamunbh_csc434";
-    $password = "ThisAccountWillBeDeleted";
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=adamunbh_ecommerce", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $conn;
-    } catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-        return null;
-    }
-}
-
-//Get a mysqli connection, rather than a PDO connection for use with the login functionality.
-function get_MySQLi_Connection(){
-    //set the vars to connect to the database.
-    //use 127.0.0.1 instead of localhost because localhost makes my local mysql take ~15-30 seconds to respond.
-    $servername = "127.0.0.1";
-    $username = "adamunbh_csc434";
-    $password = "ThisAccountWillBeDeleted";
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, "adamunbh_ecommerce");
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }    
-    return $conn;
-}
-
-function createTables(){
-    $conn = get_Connection();
-    
-    $sql = "
-    DROP TABLE IF EXISTS `Item`;
+DROP TABLE IF EXISTS `Item`;
 CREATE TABLE `Item` (
   `itemId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) CHARACTER SET latin1 NOT NULL,
@@ -88,8 +48,6 @@ CREATE TABLE `User` (
   UNIQUE KEY `userName_UNIQUE` (`userName`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-
 /*user: adondriel pass:testing*/
 INSERT INTO `User` VALUES (1,'adondrielcraft@gmail.com','ae2b1fca515949e5d54fb22b8ed95575',NULL,NULL,NULL,0,'adondriel');
 
@@ -103,15 +61,4 @@ CREATE TABLE `Wishlist` (
   PRIMARY KEY (`wishListId`),
   KEY `userId` (`userId`),
   KEY `fk_itemId1212` (`itemId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;    
-";
-        
-    try{
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();   
-    }
-    catch (PDOException $e){
-        echo $e->getMessage();
-        die();
-    }            
-}
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
