@@ -30,7 +30,12 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/register.php',
 			controller: 'registerController'
 		})
-		;
+		
+		.state('account', {
+			url: '/account',
+			templateUrl: 'partials/account.html',
+			controller: 'accountController'
+		});
         
 		/*// nested list with custom controller
         .state('home.list', {
