@@ -48,6 +48,7 @@ if(isset($_GET['logout']) && $_GET['logout']==true)
 if(isset($_POST['submit']) && $_POST['submit']=='Login')
 {
 	// Checking whether the Login form has been submitted
+    //createTables();
 
 	$err = array();
 	// Will hold our errors
@@ -72,6 +73,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 
 			$_SESSION['username']=$row['userName'];
 			$_SESSION['userId'] = $row['userId'];
+            $_SESSION['userLevel'] = $row['userLevel'];
 			$_SESSION['rememberMe'] = $_POST['rememberMe'];
 
 			// Store some data in the session
@@ -144,7 +146,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 		$_SESSION['msg']['reg-err'] = implode('<br />',$err);
 	}
 
-	header("Location: /register.php");
+	header("Location: index.php");
 	exit;
 }
 
