@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once("php/login.php");
 ?>
 <!DOCTYPE html>
@@ -19,13 +19,14 @@
 	<!-- JS (load angular, ui-router, and our custom js file) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="js/js.cookie.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/home.controller.js"></script>
 	<script src="js/search.controller.js"></script>
 	<script src="js/login.controller.js"></script>
 	<script src="js/register.controller.js"></script>
+	<script src="js/products.controller.js"></script>
 
 	<!--<script type="text/JavaScript" src="js/sha512.js"></script>
 	<script type="text/JavaScript" src="js/forms.js"></script>
@@ -51,13 +52,13 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Will add a conditional item here that will determine whether or not they are logged in, if so, will show diff buttons.-->
-				<?php 
+				<?php
 				    if(isset($_SESSION['userId']) && $_SESSION['userId']):
 				?>
                 				<li><a href="php/login.php?logout=true">Logout</a></li>
 				<li><a ui-sref="wishlist">Wishlist</a></li>
 				<li><a ui-sref="account">My Account</a></li>
-				<?php else: ?>                
+				<?php else: ?>
 				<li><a ui-sref="login">Login</a></li>
 				<li><a ui-sref="register">Register</a></li>
 				<?php endif ?>
@@ -89,7 +90,7 @@
 			type: 'GET'
 		});
 	}
-</script>	
+</script>
 </footer>
 
 </html>

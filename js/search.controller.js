@@ -1,4 +1,4 @@
-routerApp.controller('searchController', function($scope, $state, $stateParams, $filter) {  
+routerApp.controller('searchController', function($scope, $state, $stateParams, $filter) {
 	//console.info($state);
 	//console.info($stateParams);
 	//console.info($scope.searchTerm);
@@ -15,7 +15,7 @@ routerApp.controller('searchController', function($scope, $state, $stateParams, 
             name: 'Glenfiddich 1937',
             price: 20000
         }
-    ];  
+    ];
 	//This will filter the datasource by the thing they searched for.
 	$scope.searchResults = $filter('filter')($scope.scotchList, {name: $stateParams.searchTerm});
 });
