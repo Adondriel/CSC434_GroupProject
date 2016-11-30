@@ -27,6 +27,7 @@
 		<script src="js/search.controller.js"></script>
 		<script src="js/login.controller.js"></script>
 		<script src="js/register.controller.js"></script>
+		<script src="js/cart.controller.js"></script>
 
 		<!--<script type="text/JavaScript" src="js/sha512.js"></script>
 	<script type="text/JavaScript" src="js/forms.js"></script>

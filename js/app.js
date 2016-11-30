@@ -14,14 +14,30 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 		
 		.state('/', {
 			url: '/',
-			templateUrl: 'partials/home.html',
-			controller: 'homeController'
+			views: {
+                '': { 
+					templateUrl: 'partials/home.html',
+				 },
+                'item-list@/': { 
+                    templateUrl: 'partials/item-list.html',
+                    controller: 'homeController'
+                }
+            }   
 		})
 		
 		.state('search', {
 			url: '/search/:searchTerm',
-			templateUrl: 'partials/search.html',
-			controller: 'searchController'
+			controller: 'searchController',
+			views: {
+                '': { 
+					templateUrl: 'partials/search.html',
+					controller: 'searchController'
+				 },
+                'item-list@search': { 
+                    templateUrl: 'partials/item-list.html',
+                    controller: 'searchController'
+                }
+            }
 		})
 		
 		.state('login', {
@@ -34,6 +50,12 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			url: '/register',
 			templateUrl: 'partials/register.php',
 			controller: 'registerController'
+		})
+	
+		.state('cart', {
+			url: '/register',
+			templateUrl: 'partials/cart.html',
+			controller: 'cartController'
 		})
 		;
         
