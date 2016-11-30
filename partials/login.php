@@ -1,6 +1,6 @@
 <div class="left">
 <!-- Login Form -->
-<form class="clearfix" action="" method="post">
+<form id="login-form" name="login-form" class="clearfix" action="" method="post">
 <h1>Member Login</h1>
 
 <?php
@@ -18,7 +18,7 @@ if(isset($_SESSION['msg']['login-err']) && $_SESSION['msg']['login-err'])
 <input class="field" type="password" name="password" id="password" size="23" />
 <label><input name="rememberMe" id="rememberMe" type="checkbox" checked="checked" value="1" /> &nbsp;Remember me</label>
 <div class="clear"></div>
-<input type="submit" name="submit" value="Login" class="bt_login" />
+<input type="submit" name="submit" value="Login" class="bt_login"/>
 </form>
 
 </div>

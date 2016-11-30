@@ -1,17 +1,22 @@
-var routerApp = angular.module('routerApp', ['ui.router']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
 
 	
-    $urlRouterProvider.otherwise('/home');
-    
+    $urlRouterProvider.otherwise('/');
     $stateProvider        
         // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
+/*        .state('home', {
             url: '/home',
 			templateUrl: 'partials/home.html',
 			controller: 'homeController'
-        })
+        })*/
+		
+		.state('/', {
+			url: '/',
+			templateUrl: 'partials/home.html',
+			controller: 'homeController'
+		})
 		
 		.state('search', {
 			url: '/search/:searchTerm',
