@@ -19,7 +19,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 					templateUrl: 'partials/home.html',
 				 },
                 'item-list@/': { 
-                    templateUrl: 'partials/item-list.html',
+                    templateUrl: 'partials/item-list.php',
                     controller: 'homeController'
                 }
             }   
@@ -34,7 +34,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 					controller: 'searchController'
 				 },
                 'item-list@search': { 
-                    templateUrl: 'partials/item-list.html',
+                    templateUrl: 'partials/item-list.php',
                     controller: 'searchController'
                 }
             }

@@ -47,7 +47,7 @@
 					<a class="navbar-brand" ui-sref="#">eCommerce</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a ui-sref="home">Home</a></li>
+					<li><a ui-sref="/">Home</a></li>
 					<li><a ui-sref="products">Products</a></li>
 				</ul>
 
