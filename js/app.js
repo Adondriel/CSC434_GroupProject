@@ -1,22 +1,43 @@
-var routerApp = angular.module('routerApp', ['ui.router']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
 
-
-    $urlRouterProvider.otherwise('/home');
-
-    $stateProvider
+	
+    $urlRouterProvider.otherwise('/');
+    $stateProvider        
         // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
+/*        .state('home', {
             url: '/home',
 			templateUrl: 'partials/home.html',
 			controller: 'homeController'
-        })
-
+        })*/
+		
+		.state('/', {
+			url: '/',
+			views: {
+                '': { 
+					templateUrl: 'partials/home.html',
+				 },
+                'item-list@/': { 
+                    templateUrl: 'partials/item-list.php',
+                    controller: 'homeController'
+                }
+            }   
+		})
+		
 		.state('search', {
 			url: '/search/:searchTerm',
-			templateUrl: 'partials/search.html',
-			controller: 'searchController'
+			controller: 'searchController',
+			views: {
+                '': { 
+					templateUrl: 'partials/search.html',
+					controller: 'searchController'
+				 },
+                'item-list@search': { 
+                    templateUrl: 'partials/item-list.php',
+                    controller: 'searchController'
+                }
+            }
 		})
 
 		.state('login', {
@@ -24,26 +45,53 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/login.php',
 			controller: 'loginController'
 		})
-
 		.state('register', {
 			url: '/register',
 			templateUrl: 'partials/register.php',
 			controller: 'registerController'
+		})	
+		.state('cart', {
+			url: '/register',
+			templateUrl: 'partials/cart.php',
+			controller: 'cartController'
 		})
+
 
 		.state('products', {
 			url: '/products',
 			templateUrl: 'partials/item-list.html',
 			controller: 'productsController'
 		})
+    	.state('admin', {
+      		url: '/admin',
+      		templateUrl: 'partials/admin.html',
+      		controller: 'adminController'
+    	})
 
-    .state('admin', {
-      url: '/admin',
-      templateUrl: 'partials/admin.html',
-      controller: 'adminController'
-    })
-		;
 
+		.state('checkout', {
+			url: '/checkout',
+			templateUrl: 'partials/checkout.php',
+			controller: 'checkoutController'
+		})
+		.state('wishlist', {
+			url: '/wishlist',
+			templateUrl: 'partials/wishlist.php',
+			controller: 'wishlistController'
+		})
+		
+
+		
+		.state('account', {
+			url: '/account',
+			templateUrl: 'partials/account.php',
+			controller: 'accountController'
+		})		
+		.state('purchases', {
+			url: '/purchases',
+			templateUrl: 'partials/purchases.html'
+		});
+        
 		/*// nested list with custom controller
         .state('home.list', {
             url: '/list',

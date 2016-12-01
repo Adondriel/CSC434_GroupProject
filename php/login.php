@@ -41,7 +41,7 @@ if(isset($_GET['logout']) && $_GET['logout']==true)
 	session_write_close();
 	setcookie(session_name(),'',0,'/');
 	//session_regenerate_id(true);
-	header("Location: ../index.php");
+	header("Location: ../");
 	exit;
 }
 
@@ -88,7 +88,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 		$_SESSION['msg']['login-err'] = implode('<br />',$err);
 		// Save the error messages in the session
 
-	header("Location: index.php");
+	header("Location: #");
 	exit;
 }else if(isset($_POST['submit']) && $_POST['submit']=='Register')
 {
@@ -146,7 +146,7 @@ if(isset($_POST['submit']) && $_POST['submit']=='Login')
 		$_SESSION['msg']['reg-err'] = implode('<br />',$err);
 	}
 
-	header("Location: index.php");
+	header("Location: #");
 	exit;
 }
 
