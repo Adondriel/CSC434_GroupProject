@@ -33,8 +33,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 		
 		.state('account', {
 			url: '/account',
-			templateUrl: 'partials/account.html',
+			templateUrl: 'partials/account.php',
 			controller: 'accountController'
+		})
+		
+		.state('purchases', {
+			url: '/purchases',
+			templateUrl: 'partials/purchases.html'
 		});
         
 		/*// nested list with custom controller

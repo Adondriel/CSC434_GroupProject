@@ -27,7 +27,7 @@
 	<script src="js/login.controller.js"></script>
 	<script src="js/register.controller.js"></script>
 	<script src="js/account.controller.js"></script>
-	<script src="js/purchases.controller.js"></script>
+	<script src="js/purchase.controller.js"></script>
 
 	<!--<script type="text/JavaScript" src="js/sha512.js"></script>
 =======
