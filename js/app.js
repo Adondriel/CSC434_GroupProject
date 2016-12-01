@@ -36,6 +36,12 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/item-list.html',
 			controller: 'productsController'
 		})
+
+    .state('admin', {
+      url: '/admin',
+      templateUrl: 'partials/admin.html',
+      controller: 'adminController'
+    })
 		;
 
 		/*// nested list with custom controller
