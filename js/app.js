@@ -30,6 +30,12 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/register.php',
 			controller: 'registerController'
 		})
+
+		.state('checkout', {
+			url: '/checkout',
+			templateUrl: 'partials/checkout.html',
+			controller: 'checkoutController'
+		})
 		;
         
 		/*// nested list with custom controller

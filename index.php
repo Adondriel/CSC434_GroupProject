@@ -26,6 +26,7 @@
 	<script src="js/search.controller.js"></script>
 	<script src="js/login.controller.js"></script>
 	<script src="js/register.controller.js"></script>
+	<script src="js/checkout.controller.js"></script>
 
 	<!--<script type="text/JavaScript" src="js/sha512.js"></script>
 	<script type="text/JavaScript" src="js/forms.js"></script>
@@ -61,7 +62,7 @@
 				<li><a ui-sref="login">Login</a></li>
 				<li><a ui-sref="register">Register</a></li>
 				<?php endif ?>
-				<li><a ui-sref="cart">Cart</a></li>
+				<li><a ui-sref="checkout">Checkout</a></li>
 
 			</ul>
 			<div class="navbar-form navbar-right">
