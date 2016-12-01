@@ -45,30 +45,29 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/login.php',
 			controller: 'loginController'
 		})
-
 		.state('register', {
 			url: '/register',
 			templateUrl: 'partials/register.php',
 			controller: 'registerController'
-		})
-	
+		})	
 		.state('cart', {
 			url: '/register',
 			templateUrl: 'partials/cart.php',
 			controller: 'cartController'
 		})
 
+
 		.state('products', {
 			url: '/products',
 			templateUrl: 'partials/item-list.html',
 			controller: 'productsController'
 		})
+    	.state('admin', {
+      		url: '/admin',
+      		templateUrl: 'partials/admin.html',
+      		controller: 'adminController'
+    	})
 
-    .state('admin', {
-      url: '/admin',
-      templateUrl: 'partials/admin.html',
-      controller: 'adminController'
-    })
 
 		.state('checkout', {
 			url: '/checkout',
@@ -80,15 +79,14 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/wishlist.php',
 			controller: 'wishlistController'
 		})
-		;
+		
 
 		
 		.state('account', {
 			url: '/account',
 			templateUrl: 'partials/account.php',
 			controller: 'accountController'
-		})
-		
+		})		
 		.state('purchases', {
 			url: '/purchases',
 			templateUrl: 'partials/purchases.html'

@@ -30,10 +30,12 @@
 		<script src="js/register.controller.js"></script>
 		<script src="js/cart.controller.js"></script>
 		<script src="js/admin.controller.js"></script>
-	<script src="js/products.controller.js"></script>
-	<script src="js/account.controller.js"></script>
-	<script src="js/purchase.controller.js"></script>
-	<script src="js/checkout.controller.js"></script>
+		<script src="js/products.controller.js"></script>
+		<script src="js/account.controller.js"></script>
+		<script src="js/purchase.controller.js"></script>
+		<script src="js/checkout.controller.js"></script>
+		<script src="js/wishlist.controller.js"></script>
+
 
 		<!--<script type="text/JavaScript" src="js/sha512.js"></script>
 	<script type="text/JavaScript" src="js/forms.js"></script>
