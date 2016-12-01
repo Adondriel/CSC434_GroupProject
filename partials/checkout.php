@@ -1,4 +1,10 @@
-<form id="checkout_form" name="checkout_form" class="form-horizontal">
+<?php 
+    require_once("../php/login.php");
+    require_once("../php/checkout.php")
+?>
+
+<!-- Both Shipping and Billing form -->
+<form id="checkout_form" name="checkout_form" class="form-horizontal" method="post" action="">
     <fieldset>
         <legend>Shipping Information</legend>
         <div class="form-group">
@@ -44,8 +50,8 @@
           </div>
         </div>
     </fieldset >
-    <fieldset>
-    
+   
+    <fieldset> 
     <legend>Billing Information</legend> 
         <div class="form-group">
           <label for="inputBillingName" class="col-lg-2 control-label">Full Name On Card</label>

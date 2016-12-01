@@ -33,7 +33,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
 		.state('checkout', {
 			url: '/checkout',
-			templateUrl: 'partials/checkout.html',
+			templateUrl: 'partials/checkout.php',
 			controller: 'checkoutController'
 		})
 		;

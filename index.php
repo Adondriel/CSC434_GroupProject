@@ -1,5 +1,6 @@
 <?php 
 	require_once("php/login.php");
+	require_once("php/checkout.php");
 ?>
 <!DOCTYPE html>
 <html>
