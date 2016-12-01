@@ -53,7 +53,9 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<!-- Will add a conditional item here that will determine whether or not they are logged in, if so, will show diff buttons.-->
-
+					<?php 
+						//echo($_SESSION['username']); 
+					?>
 					<?php 
 				    if(isset($_SESSION['userId']) && $_SESSION['userId']):
 					?>
@@ -104,16 +106,4 @@
 			<div ui-view></div>
 		</div>
 	</body>
-
-	<footer>
-		<script type="application/javascript">
-			function Logout() {
-				$.ajax({
-					url: 'index.php?logout=true',
-					type: 'GET'
-				});
-			}
-		</script>
-	</footer>
-
 	</html>
