@@ -1,17 +1,5 @@
-<h2>Featured Scotches</h2>
+<h1>Welcome to our eCommerce Site!</h1>
+<p>This site is written using Angular, along with Angular UI-Router, and a PHP backend.</p>
+<h2>Featured Items</h2>
 
-<div class="col-md-4" ng-repeat="item in featuredItems">
-	<div class="col-md-12 center-block">
-		<img src="assets/ph.svg" class="img-responsive center-block">
-	</div>
-	<div class="col-md-12">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">{{item.name}}</h3>
-			</div>
-			<div class="panel-body">
-				${{item.price}}
-			</div>
-		</div>
-	</div>
-</div>
+<div ui-view="item-list">
