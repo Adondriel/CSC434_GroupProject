@@ -51,7 +51,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			controller: 'registerController'
 		})	
 		.state('cart', {
-			url: '/register',
+			url: '/cart',
 			templateUrl: 'partials/cart.php',
 			controller: 'cartController'
 		})
