@@ -69,6 +69,17 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/admin.html',
       controller: 'adminController'
     })
+
+		.state('checkout', {
+			url: '/checkout',
+			templateUrl: 'partials/checkout.php',
+			controller: 'checkoutController'
+		})
+		.state('wishlist', {
+			url: '/wishlist',
+			templateUrl: 'partials/wishlist.php',
+			controller: 'wishlistController'
+		})
 		;
 
 		
