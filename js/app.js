@@ -36,6 +36,11 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/checkout.php',
 			controller: 'checkoutController'
 		})
+		.state('wishlist', {
+			url: '/wishlist',
+			templateUrl: 'partials/wishlist.php',
+			controller: 'wishlistController'
+		})
 		;
         
 		/*// nested list with custom controller
