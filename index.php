@@ -27,6 +27,7 @@
 		<script src="js/search.controller.js"></script>
 		<script src="js/login.controller.js"></script>
 		<script src="js/register.controller.js"></script>
+		<script src="js/cart.controller.js"></script>
 
 		<!--<script type="text/JavaScript" src="js/sha512.js"></script>
 	<script type="text/JavaScript" src="js/forms.js"></script>
@@ -46,7 +47,7 @@
 					<a class="navbar-brand" ui-sref="#">eCommerce</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a ui-sref="home">Home</a></li>
+					<li><a ui-sref="/">Home</a></li>
 					<li><a ui-sref="products">Products</a></li>
 				</ul>
 

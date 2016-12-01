@@ -5,7 +5,7 @@ routerApp.controller('homeController', function($scope) {
 		dataType: 'json',
 		success: function(data){
 			$scope.$apply(function(){
-				$scope.featuredItems = data;
+				$scope.items = data;
 			});
 			console.info(data);
 		}
