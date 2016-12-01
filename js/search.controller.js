@@ -1,4 +1,4 @@
-routerApp.controller('searchController', function($scope, $state, $stateParams, $filter) {  
+routerApp.controller('searchController', function($scope, $state, $stateParams, $filter) {
 	//console.info($state);
 	//console.info($stateParams);
 	//console.info($scope.searchTerm);

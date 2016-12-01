@@ -16,7 +16,10 @@ function getAllItems(){
 }
 
 function getItemByID($id){
+
 	//return the specific item, with this specific ID.
+
+
 }
 
 function insertExampleItem(){

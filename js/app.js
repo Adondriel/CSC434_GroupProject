@@ -39,13 +39,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
 		})
-		
+
 		.state('login', {
 			url: '/login',
 			templateUrl: 'partials/login.php',
 			controller: 'loginController'
 		})
-		
+
 		.state('register', {
 			url: '/register',
 			templateUrl: 'partials/register.php',
@@ -57,8 +57,20 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/cart.php',
 			controller: 'cartController'
 		})
+
+		.state('products', {
+			url: '/products',
+			templateUrl: 'partials/item-list.html',
+			controller: 'productsController'
+		})
+
+    .state('admin', {
+      url: '/admin',
+      templateUrl: 'partials/admin.html',
+      controller: 'adminController'
+    })
 		;
-        
+
 		/*// nested list with custom controller
         .state('home.list', {
             url: '/list',
@@ -67,13 +79,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
             }
         })
-        
+
         // nested list with just some random string data
         .state('home.paragraph', {
             url: '/paragraph',
             template: 'I could sure use a drink right now.'
         })*/
-        
+
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
 		  /*
 		  	Use <div ui-view="columnOne"></div> for the "columnOne@about: {}" to be placed into
@@ -85,12 +97,11 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             views: {
                 '': { templateUrl: 'partials/about.html' },
                 'columnOne@about': { template: 'Look I am a column!' },
-                'columnTwo@about': { 
+                'columnTwo@about': {
                     templateUrl: 'partials/table-data.html',
                     controller: 'scotchController'
                 }
-            }            
+            }
         });*/
-        
-});
 
+});
