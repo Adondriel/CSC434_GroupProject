@@ -1,35 +1,73 @@
-var routerApp = angular.module('routerApp', ['ui.router']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
 
 	
-    $urlRouterProvider.otherwise('/home');
-    
+    $urlRouterProvider.otherwise('/');
     $stateProvider        
         // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
+/*        .state('home', {
             url: '/home',
 			templateUrl: 'partials/home.html',
 			controller: 'homeController'
-        })
+        })*/
+		
+		.state('/', {
+			url: '/',
+			views: {
+                '': { 
+					templateUrl: 'partials/home.html',
+				 },
+                'item-list@/': { 
+                    templateUrl: 'partials/item-list.php',
+                    controller: 'homeController'
+                }
+            }   
+		})
 		
 		.state('search', {
 			url: '/search/:searchTerm',
-			templateUrl: 'partials/search.html',
-			controller: 'searchController'
+			controller: 'searchController',
+			views: {
+                '': { 
+					templateUrl: 'partials/search.html',
+					controller: 'searchController'
+				 },
+                'item-list@search': { 
+                    templateUrl: 'partials/item-list.php',
+                    controller: 'searchController'
+                }
+            }
 		})
-		
+
 		.state('login', {
 			url: '/login',
 			templateUrl: 'partials/login.php',
 			controller: 'loginController'
 		})
-		
 		.state('register', {
 			url: '/register',
 			templateUrl: 'partials/register.php',
 			controller: 'registerController'
+		})	
+		.state('cart', {
+			url: '/cart',
+			templateUrl: 'partials/cart.php',
+			controller: 'cartController'
 		})
+
+
+		.state('products', {
+			url: '/products',
+			templateUrl: 'partials/item-list.html',
+			controller: 'productsController'
+		})
+    	.state('admin', {
+      		url: '/admin',
+      		templateUrl: 'partials/admin.html',
+      		controller: 'adminController'
+    	})
+
 
 		.state('checkout', {
 			url: '/checkout',
@@ -41,7 +79,18 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'partials/wishlist.php',
 			controller: 'wishlistController'
 		})
-		;
+		
+
+		
+		.state('account', {
+			url: '/account',
+			templateUrl: 'partials/account.php',
+			controller: 'accountController'
+		})		
+		.state('purchases', {
+			url: '/purchases',
+			templateUrl: 'partials/purchases.html'
+		});
         
 		/*// nested list with custom controller
         .state('home.list', {
@@ -51,13 +100,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
             }
         })
-        
+
         // nested list with just some random string data
         .state('home.paragraph', {
             url: '/paragraph',
             template: 'I could sure use a drink right now.'
         })*/
-        
+
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
 		  /*
 		  	Use <div ui-view="columnOne"></div> for the "columnOne@about: {}" to be placed into
@@ -69,12 +118,11 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             views: {
                 '': { templateUrl: 'partials/about.html' },
                 'columnOne@about': { template: 'Look I am a column!' },
-                'columnTwo@about': { 
+                'columnTwo@about': {
                     templateUrl: 'partials/table-data.html',
                     controller: 'scotchController'
                 }
-            }            
+            }
         });*/
-        
-});
 
+});

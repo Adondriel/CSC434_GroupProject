@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS `Item`;
 CREATE TABLE `Item` (
   `itemId` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) CHARACTER SET latin1 NOT NULL,
-  `desription` varchar(1024) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(1024) CHARACTER SET latin1 NOT NULL,
   `price` double(20,2) NOT NULL,
   `stock` int(11) NOT NULL,
   `image` longblob,
