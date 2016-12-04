@@ -36,4 +36,6 @@ routerApp.controller('cartController', function($scope) {
         localStorage.setItem('cart', JSON.stringify(cart));
         //console.info(cart);
     }
+
+    $scope.cart = localStorage.getItem('cart');
 });
