@@ -4,8 +4,7 @@
 ?>
 
 <!-- Both Shipping and Billing form -->
-<form id="checkout_form" name="checkout_form" class="form-horizontal" method="post" action="">
-    <fieldset>
+<form id="checkout_form" name="checkout_form" class="form-horizontal" ng-submit="submit()" ng-controller="checkoutController">
         <legend>Shipping Information</legend>
         <div class="form-group">
           <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
@@ -48,10 +47,7 @@
           <div class="col-lg-10">
             <input class="form-control" id="inputCountry" name="inputCountry" placeholder="eg: United States of America" type="text">
           </div>
-        </div>
-    </fieldset >
    
-    <fieldset> 
     <legend>Billing Information</legend> 
         <div class="form-group">
           <label for="inputBillingName" class="col-lg-2 control-label">Full Name On Card</label>
@@ -71,7 +67,6 @@
             <input class="form-control" id="inputSecurityCode" name="inputSecurityCode" placeholder="eg: 123" type="text">
           </div>
         </div>
-    </fieldset>
     
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
