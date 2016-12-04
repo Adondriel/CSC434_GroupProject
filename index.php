@@ -1,5 +1,6 @@
 <?php
 	require_once("php/login.php");
+	require_once("php/account.php");
 	require_once("php/checkout.php");
 ?>
 	<!DOCTYPE html>
@@ -32,6 +33,7 @@
 		<script src="js/admin.controller.js"></script>
 		<script src="js/products.controller.js"></script>
 		<script src="js/account.controller.js"></script>
+		<script src="js/account.validation.js"></script>
 		<script src="js/purchase.controller.js"></script>
 		<script src="js/checkout.controller.js"></script>
 		<script src="js/wishlist.controller.js"></script>
