@@ -1,7 +1,7 @@
 <?php 
 
-    require_once("item.php");
-    if(isset($_SESSION['userId']) && $_SESSION['userId'])
+$test = $_POST;
+if(isset($_SESSION['userId']) && $_SESSION['userId'])
     {
         //Shipping Info
         if(isset($_POST["inputFirstName"]) )
@@ -48,4 +48,5 @@
         }
     }
     echo print_r($_POST);
+
 ?>
