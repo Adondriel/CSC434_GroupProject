@@ -1,5 +1,6 @@
 <!--
 	partials/account.php
+	Page with HTML form (and some PHP and JavaScript)
     author: Josh Varone
 -->
 
@@ -11,6 +12,7 @@
 <h1>Your Account</h1>
 
 <?php
+	//If user is logged in, show User form
 	if(isset($_SESSION['userId']) && $_SESSION['userId']):
 ?>
 
@@ -20,7 +22,8 @@
 
 <div class="col-md-6">
 
-	<form action="" method="post" name="userInformation">
+	<!--User account form-->
+	<form action="" method="post" name="userInformation" id="userInformation" onsubmit="return validateAccount(this)">
 
 		<div class="form-group row">
 			<label for="firstName" class="col-xs-3 col-form-label">First Name</label>
@@ -39,7 +42,7 @@
 		<div class="form-group row">
 			<label for="email" class="col-xs-3 col-form-label">Email</label>
 			<div class="col-xs-8">
-				<input required class="form-control" type="text" name="email" id="email" value="<?php echo getUserElement('email'); ?>" />
+				<input required class="form-control" type="email" name="email" id="email" value="<?php echo getUserElement('email'); ?>" />
 			</div>
 		</div>
 
@@ -84,7 +87,7 @@
 		
 		<div class="form-group row">
 			<div class="col=xs-12">
-				<input type="submit" value="Save Changes" class="btn btn-primary" onclick="formhash(this.form, this.form.currentPassword, this.form.newPassword1, this.form.newPassword2);" />
+				<input type="submit" value="Save Changes" class="btn btn-primary" />
 			</div>
 		</div>
 		
@@ -94,9 +97,15 @@
 
 <div class="col-md-6"></div>
 
-<?php else: ?>
+<?php 
+	//If user is not logged in, take them to login page
+	else: 
+?>
 
 Please log in to access your account information.<br>
 <a ui-sref="login">Login</a>
 
-<?php endif ?>
+<?php 
+	//End of the PHP if statememt
+	endif 
+?>
