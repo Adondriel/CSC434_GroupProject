@@ -5,31 +5,31 @@ var retrievedObject = localStorage.getItem('testObject');
 console.log('retrievedObject: ', JSON.parse(retrievedObject));
 */
 
-routerApp.controller('cartController', function($scope) {  
-	$scope.addItemToCart = function(item){
+routerApp.controller('cartController', function($scope) {
+    $scope.addItemToCart = function(item) {
         item.quantity = 1;
         //console.info(item);
         var cart = [];
-        if(localStorage.getItem('cart') === null){
+        if (localStorage.getItem('cart') === null) {
             cart.push(item);
-        }else{
+        } else {
             cart = JSON.parse(localStorage.getItem('cart'));
             //check if the item is already in the cart, if so add to the quanity.
             var alreadyInCart = false;
-            for(i=0; i < cart.length;i++){
+            for (i = 0; i < cart.length; i++) {
                 loopItem = cart[i];
-                if (loopItem.itemId === item.itemId){
+                if (loopItem.itemId === item.itemId) {
                     alreadyInCart = true;
                     //We know there is at least 1 of said item in cart now,
                     //Now, we need to verify that quantity has been initiated, 
                     //we start at 1 because we already have 1 in the cart and will increment this newly initialized variable right after this.
-                    if(loopItem.quantity === null){
+                    if (loopItem.quantity === null) {
                         cart[i].quantity = "1";
                     }
                     cart[i].quantity = parseInt(cart[i].quantity) + 1;
                 }
-            } 
-            if(!alreadyInCart){
+            }
+            if (!alreadyInCart) {
                 cart.push(item);
             }
         }
@@ -37,5 +37,16 @@ routerApp.controller('cartController', function($scope) {
         //console.info(cart);
     }
 
-    $scope.cart = localStorage.getItem('cart');
+    $scope.updateCart = function(localCart) {
+        localStorage.setItem('cart', JSON.stringify(localCart));
+    }
+
+    $scope.cart = JSON.parse(localStorage.getItem('cart'));
+    $scope.total = function() {
+        var sum = 0;
+        for (var i = 0; i < this.cart.length; i++) {
+            sum = sum + this.cart[i].price * this.cart[i].quantity;
+        }
+        return sum.toFixed(2);
+    }
 });
