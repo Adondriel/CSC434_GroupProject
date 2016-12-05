@@ -41,6 +41,12 @@ routerApp.controller('cartController', function($scope) {
         localStorage.setItem('cart', JSON.stringify(localCart));
     }
 
+    $scope.removeItem = function(item) {
+        var index = this.cart.indexOf(item);
+        this.cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
+
     $scope.cart = JSON.parse(localStorage.getItem('cart'));
     $scope.total = function() {
         var sum = 0;
