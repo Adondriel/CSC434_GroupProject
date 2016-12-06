@@ -10,7 +10,8 @@ routerApp.controller('checkoutController', function ($scope) {
             data: this.formData, // data to be submitted
             success: function (response) {
                 //alert(response); // do what you like with the response
-                //localStorage.removeItem('cart');
+                alert("Thank you!");
+                localStorage.removeItem('cart');
             }
         });
         return false;
