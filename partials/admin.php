@@ -14,14 +14,16 @@
 					<th>Description</th>
 					<th>Stock</th>
 					<th>Price</th>
+					<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="item in items">
-					<td><input type="text" ng-model="item.name" ng-change="updateCart(cart)"></td>
-					<td><input type="text" ng-model="item.description" ng-change="updateCart(cart)"></td>
-					<td><input type="number" min="0" ng-model="item.stock" ng-change="updateCart(cart)"></td>
-					<td><input type="text" ng-model="item.price" ng-change="updateCart(cart)"></td>
+					<td><input type="text" ng-model="item.name"></td>
+					<td><input type="text" ng-model="item.description"></td>
+					<td><input type="number" min="0" ng-model="item.stock"></td>
+					<td><input type="text" ng-model="item.price"></td>
+					<td><a ng-click="updateItem(item)" ui-sref="admin"><i class="fa fa-check" aria-hidden="true"></a></i></td>
 					</tr>
 				</tbody>
 			</table> 
