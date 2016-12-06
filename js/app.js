@@ -58,10 +58,19 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
 
     .state('products', {
+
             url: '/products',
-            templateUrl: 'partials/item-list.php',
-            controller: 'productsController'
+            views: {
+                '': {
+                    templateUrl: 'partials/products.html',
+                },
+                'item-list@products': {
+                    templateUrl: 'partials/item-list.php',
+                    controller: 'productsController'
+                }
+            }
         })
+
         .state('admin', {
             url: '/admin',
             templateUrl: 'partials/admin.html',
