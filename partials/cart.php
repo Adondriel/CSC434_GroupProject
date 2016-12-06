@@ -29,7 +29,18 @@
   </div>
   <div class="panel-body">
     <h4>Total: {{total()}}</h4>
-    <a ui-sref="checkout" class="btn btn-primary">Checkout</a
+    <?php 
+      if(isset($_SESSION['userId']) && $_SESSION['userId']):
+		?>
+    <a ui-sref="checkout" class="btn btn-primary">Checkout</a>
+    <?php 
+        else:
+    ?>
+    <h3>Please login to checkout.</h3>
+    <a class="btn btn-primary disabled">Checkout</a>
+    <?php
+      endif;
+    ?>
   </div>
 </div>
 </div>
