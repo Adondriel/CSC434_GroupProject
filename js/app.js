@@ -68,31 +68,30 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             controller: 'adminController'
         })
 
+		.state('checkout', {
+			url: '/checkout',
+			templateUrl: 'partials/checkout.php',
+			controller: 'checkoutController'
+		})
+		.state('wishlist', {
+			url: '/wishlist',
+			templateUrl: 'partials/wishlist.php',
+			controller: 'wishlistController'
+		})
+				
+		.state('account', {
+			url: '/account',
+			templateUrl: 'partials/account.php',
+			controller: 'accountController'
+		})
 
-    .state('checkout', {
-            url: '/checkout',
-            templateUrl: 'partials/checkout.php',
-            controller: 'checkoutController'
-        })
-        .state('wishlist', {
-            url: '/wishlist',
-            templateUrl: 'partials/wishlist.php',
-            controller: 'wishlistController'
-        })
-
-
-
-    .state('account', {
-            url: '/account',
-            templateUrl: 'partials/account.php',
-            controller: 'accountController'
-        })
-        .state('purchases', {
-            url: '/purchases',
-            templateUrl: 'partials/purchases.html'
-        });
-
-    /*// nested list with custom controller
+		.state('purchases', {
+			url: '/purchases',
+			templateUrl: 'partials/purchase.php',
+			controller: 'purchaseController'
+		});
+        
+		/*// nested list with custom controller
         .state('home.list', {
             url: '/list',
             templateUrl: 'partials/home-list.html',
