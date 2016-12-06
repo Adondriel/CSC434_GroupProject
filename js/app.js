@@ -65,7 +65,6 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-
         .state('admin', {
             url: '/admin',
             templateUrl: 'partials/admin.php',
