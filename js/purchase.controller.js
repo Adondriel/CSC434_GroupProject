@@ -4,8 +4,6 @@
 
 routerApp.controller('purchaseController', function($scope) { 
 
-    $scope.purchases = "";
-
     $.ajax({
         url: 'php/purchase.php',
         data: {func: "getAllPurchases"},
