@@ -67,7 +67,18 @@ if(isset($_POST['func']) && $_POST['func']=="updateItem"){
 }
 
 if(isset($_POST['func']) && $_POST['func']=="addItem"){
-	//all form data is directly in the "$_POST" array, image data is in the format of:
-	//
-    print_r($_POST['item']);
+	//all form data is directly in the "$_POST['item']" object, image data is in the format of:
+	//image =   {
+    //"filesize": 54836, /* bytes */
+    //"filetype": "image/jpeg",
+    //"filename": "profile.jpg",
+    //"base64":   "/9j/4AAQSkZJRgABAgAAAQABAAD//gAEKgD/4gIctcwIQA..."
+  	//}
+	//for example, image should be accessed from "$_POST['item']['image']['base64']" (I think)
+	//You will only need to place the "base64" property into the DB, we don't really care about the other things.
+	//File size is limited clientside, to 5MB (5000kb), if you want to verify that.'
+	//Be careful if you upload a file file >2mb, it will freeze chrome dev tools if you try to look at the output of the line below.
+	//Eventually it will come back, but it is very very slow to display the info.
+	
+	    print_r($_POST['item']);
 }
