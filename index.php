@@ -23,6 +23,8 @@
 		<script src="js/ui-bootstrap-2.3.0.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.js"></script>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="js/angular-base64-upload.min.js"></script>
+
 		<script src="js/app.js"></script>
 		<script src="js/home.controller.js"></script>
 		<script src="js/search.controller.js"></script>
@@ -30,6 +32,7 @@
 		<script src="js/register.controller.js"></script>
 		<script src="js/cart.controller.js"></script>
 		<script src="js/admin.controller.js"></script>
+		<script src="js/additem.controller.js"></script>
 		<script src="js/products.controller.js"></script>
 		<script src="js/account.controller.js"></script>
 		<script src="js/account.validation.js"></script>

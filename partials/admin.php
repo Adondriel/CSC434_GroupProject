@@ -4,7 +4,7 @@
       if(isset($_SESSION['userId']) && $_SESSION['userId'] && $_SESSION['userLevel'] >= 1):
 	?>
 		<div class="col-md-12">
-			<a class="btn btn-success">Add Item</a>
+			<button class="btn btn-success" ui-sref="additem">Add Item</button>
 		</div>
 		<div class="col-mid-12">
 			<table class="table table-striped table-hover">
