@@ -67,6 +67,7 @@ if(isset($_POST['func']) && $_POST['func']=="updateItem"){
 }
 
 if(isset($_POST['func']) && $_POST['func']=="addItem"){
-	//This is where add item will execute, when the post request is sent.
+	//all form data is directly in the "$_POST" array, image data is in the format of:
+	//
     print_r($_POST['item']);
 }
