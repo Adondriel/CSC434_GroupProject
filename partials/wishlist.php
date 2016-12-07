@@ -26,7 +26,7 @@ function get_userId()
 function create_form($wishlist)
 {
 echo <<<END
-<form id="checkout_form" name="checkout_form" class="form-horizontal" method="post" action="" >
+<form id="checkout_form" name="checkout_form" class="form-horizontal" method="post" action="">
         <legend>Wishlist</legend>
 <table class="table table-striped table-hover ">
 <tr>
