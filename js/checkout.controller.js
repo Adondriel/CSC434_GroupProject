@@ -1,16 +1,19 @@
-routerApp.controller('checkoutController', function($scope) {  
-    $scope.featuredItems = [
-        {
-            name: 'Macallan 12',
-            price: 50
-        },
-        {
-            name: 'Chivas Regal Royal Salute',
-            price: 10000
-        },
-        {
-            name: 'Glenfiddich 1937',
-            price: 20000
-        }
-    ];    
+routerApp.controller('checkoutController', function($scope) {
+    $scope.formData = {};
+
+    $scope.submit = function(event, form) {
+        this.formData.cart = JSON.parse(localStorage.getItem('cart'));
+        console.info(this.formData);
+        $.ajax({
+            url: 'php/checkout.php',
+            type: 'POST',
+            data: this.formData, // data to be submitted
+            success: function(response) {
+                //alert(response); // do what you like with the response
+                alert("Thank you!");
+                localStorage.removeItem('cart');
+            }
+        });
+        return false;
+    };
 });

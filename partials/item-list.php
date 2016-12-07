@@ -2,8 +2,10 @@
 	include("../php/login.php");
 ?>
 <div class="col-md-4" ng-repeat="item in items">
-	<div class="col-md-12 center-block">
-		<img src="assets/ph.svg" class="img-responsive center-block">
+	<div class="col-md-12 center-block">	
+		<img ng-show="item.image===null" src="assets/ph.svg" class="img-responsive center-block">
+		<img ng-show="item.image!==null" data-ng-src="data:image/png;base64, {{item.image}}" class="img-responsive center-block">
+
 	</div>
 	<div class="col-md-12">
 		<div class="panel panel-primary">
@@ -20,8 +22,8 @@
 					<?php 
 				    if(isset($_SESSION['userId']) && $_SESSION['userId']):
 					?>
-					<div class="col-md-6">
-						<a href="#" class="btn btn-success">Add to Wishlist</a>
+					<div class="col-md-6" ng-controller="wishlistController">
+						<a ng-click="addItemToWishlist(item.itemId)" href="#" class="btn btn-success">Add to Wishlist</a>
 					</div>
 					<?php 
 					endif

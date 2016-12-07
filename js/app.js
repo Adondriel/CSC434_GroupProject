@@ -1,4 +1,4 @@
-var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'naif.base64']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -13,34 +13,32 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             })*/
 
         .state('/', {
-        url: '/',
-        views: {
-            '': {
-                templateUrl: 'partials/home.html',
-            },
-            'item-list@/': {
-                templateUrl: 'partials/item-list.php',
-                controller: 'homeController'
+            url: '/',
+            views: {
+                '': {
+                    templateUrl: 'partials/home.html',
+                },
+                'item-list@/': {
+                    templateUrl: 'partials/item-list.php',
+                    controller: 'homeController'
+                }
             }
-        }
-    })
-
-    .state('search', {
-        url: '/search/:searchTerm',
-        controller: 'searchController',
-        views: {
-            '': {
-                templateUrl: 'partials/search.html',
-                controller: 'searchController'
-            },
-            'item-list@search': {
-                templateUrl: 'partials/item-list.php',
-                controller: 'searchController'
+        })
+        .state('search', {
+            url: '/search/:searchTerm',
+            controller: 'searchController',
+            views: {
+                '': {
+                    templateUrl: 'partials/search.html',
+                    controller: 'searchController'
+                },
+                'item-list@search': {
+                    templateUrl: 'partials/item-list.php',
+                    controller: 'searchController'
+                }
             }
-        }
-    })
-
-    .state('login', {
+        })
+        .state('login', {
             url: '/login',
             templateUrl: 'partials/login.php',
             controller: 'loginController'
@@ -55,36 +53,43 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/cart.php',
             controller: 'cartController'
         })
-
-
-    .state('products', {
+        .state('products', {
             url: '/products',
-            templateUrl: 'partials/item-list.php',
-            controller: 'productsController'
+            views: {
+                '': {
+                    templateUrl: 'partials/products.html',
+                },
+                'item-list@products': {
+                    templateUrl: 'partials/item-list.php',
+                    controller: 'productsController'
+                }
+            }
         })
         .state('admin', {
             url: '/admin',
-            templateUrl: 'partials/admin.html',
+            templateUrl: 'partials/admin.php',
             controller: 'adminController'
         })
-
-		.state('checkout', {
-			url: '/checkout',
-			templateUrl: 'partials/checkout.php',
-			controller: 'checkoutController'
-		})
-		.state('wishlist', {
-			url: '/wishlist',
-			templateUrl: 'partials/wishlist.php',
-			controller: 'wishlistController'
-		})
-				
-		.state('account', {
-			url: '/account',
-			templateUrl: 'partials/account.php',
-			controller: 'accountController'
-		})
-
+        .state('additem', {
+            url: '/additem',
+            templateUrl: 'partials/additem.php',
+            controller: 'addItemController'
+        })
+        .state('checkout', {
+            url: '/checkout',
+            templateUrl: 'partials/checkout.php',
+            controller: 'checkoutController'
+        })
+        .state('wishlist', {
+            url: '/wishlist',
+            templateUrl: 'partials/wishlist.php',
+            controller: 'wishlistController'
+        })
+        .state('account', {
+            url: '/account',
+            templateUrl: 'partials/account.php',
+            controller: 'accountController'
+        })
 		.state('purchases', {
 			url: '/purchases',
 			templateUrl: 'partials/purchase.php',
