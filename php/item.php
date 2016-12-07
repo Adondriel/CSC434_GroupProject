@@ -45,6 +45,19 @@ function insertExampleItem(){
     $result = $conn->exec($sql);
 }
 
+function addItem($name, $description, $price, $stock, $iamge){
+    $conn = get_Connection();
+    $stmt = $conn->prepare("INSERT INTO item (name, description, price, stock, image) VALUES (:name, :description, :price, :stock, :image);");
+    $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+    $stmt->bindParam(":description", $description, PDO::PARAM_STR);
+    $stmt->bindParam(":price", $price);
+    $stmt->bindParam(":stock", $stock, PDO::PARAM_INT);
+    $stmt->bindParam(":image", $image);
+
+  
+    $result = $stmt->execute();
+}
+
 //Respond to the get request, and call the getAllItems function, and then json encode the data.
 if(isset($_GET['func']) && $_GET['func']=="getAllItems"){
     echo(json_encode(getAllItems(), JSON_NUMERIC_CHECK));
@@ -80,5 +93,17 @@ if(isset($_POST['func']) && $_POST['func']=="addItem"){
 	//Be careful if you upload a file file >2mb, it will freeze chrome dev tools if you try to look at the output of the line below.
 	//Eventually it will come back, but it is very very slow to display the info.
 	
-	    print_r($_POST['item']);
+	print_r($_POST['item']);
+
+    $item = $_POST['item'];
+    
+    $name = $item['txtItemName'];
+    $desc = $item['txtDesc'];
+    $stock = $item['numStock'];
+    $price = $item['txtPrice'];
+    $image = $_POST['item']['image']['base64'];
+    
+    if(isset($_SESSION['userId']) && $_SESSION['userId'] && $_SESSION['userLevel'] >= 1){
+        addItem($name, $desc, $stock, $price, $image);
+    }
 }
