@@ -1,13 +1,12 @@
 <?php
 	require_once("php/login.php");
 	require_once("php/account.php");
-	require_once("php/checkout.php");
 ?>
 	<!DOCTYPE html>
 	<html>
 
 	<head>
-
+		<title>eCommerce</title>
 		<!-- CSS (load bootstrap) -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">

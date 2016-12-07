@@ -1,5 +1,5 @@
 <?php 
-include_once("db.php");
+require_once("db.php");
 
 if(isset($_SESSION['userId']) && $_SESSION['userId'])
     {
@@ -13,6 +13,7 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'])
         $inputBillingName = "";
         $inputCardNumber = "";
         $inputSecurityCode = "";
+        $inputCart = "";
         //Shipping Info
         if(isset($_POST["inputFirstName"]) )
         {

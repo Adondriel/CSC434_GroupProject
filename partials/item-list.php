@@ -22,8 +22,8 @@
 					<?php 
 				    if(isset($_SESSION['userId']) && $_SESSION['userId']):
 					?>
-					<div class="col-md-6">
-						<a href="#" class="btn btn-success">Add to Wishlist</a>
+					<div class="col-md-6" ng-controller="wishlistController">
+						<a ng-click="addItemToWishlist(item.itemId)" href="#" class="btn btn-success">Add to Wishlist</a>
 					</div>
 					<?php 
 					endif

@@ -37,6 +37,26 @@ routerApp.controller('cartController', function($scope) {
         //console.info(cart);
     }
 
+    $scope.addWishlistToCart = function() {
+        $.ajax({
+            url: 'php/wishlist.php',
+            type: 'POST',
+            data: { func: "getWishlist" },
+            dataType: 'json',
+            success: function(data) {
+                $scope.$apply(function() {
+                    console.info(data);
+                    $scope.wishlist = data
+                });
+            }
+        });
+
+        for (var i = 0; i < this.wishlist.length; i++) {
+            this.addItemToCart(this.wishlist[i]);
+        }
+        console.info(this.cart);
+    }
+
     $scope.updateCart = function(localCart) {
         localStorage.setItem('cart', JSON.stringify(localCart));
     }
@@ -49,10 +69,14 @@ routerApp.controller('cartController', function($scope) {
 
     $scope.cart = JSON.parse(localStorage.getItem('cart'));
     $scope.total = function() {
-        var sum = 0;
-        for (var i = 0; i < this.cart.length; i++) {
-            sum = sum + this.cart[i].price * this.cart[i].quantity;
+        if (this.cart) {
+            var sum = 0.00;
+            for (var i = 0; i < this.cart.length; i++) {
+                sum = sum + this.cart[i].price * this.cart[i].quantity;
+            }
+            return sum.toFixed(2);
+        } else {
+            return 0.00;
         }
-        return sum.toFixed(2);
     }
 });
