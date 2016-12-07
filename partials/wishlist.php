@@ -23,7 +23,7 @@ function get_userId()
 		return -1;
 }
 
-function create_form($wishlist)
+function create_form($wishlist, $conn)
 {
 echo <<<END
 <form id="checkout_form" name="checkout_form" class="form-horizontal" method="post" action="">
@@ -32,6 +32,7 @@ echo <<<END
 <tr>
 	<th></th>
 	<th>Item Name</th>
+	<th>Price</th>
 	<th>Date Added</th>
 </tr>
 END;
@@ -39,11 +40,16 @@ END;
 	$count = 0;
 	foreach($wishlist as  $item)
 	{
-		$count = $count + 1;
-		echo '<tr><td align="center"><input type="checkbox" id="case'.$count.' name="case'.$count.'" value="1"/></td>';
-		echo '<td>'.$item['itemId'].'</td>';
-		echo '<td>'.$item['dateAdded'].'</td>';
-		echo '</tr>';
+		$statement = $conn->query("select * from Item where itemId = ".((int) $item["itemId"]));
+		foreach($statement as $row)
+		{
+			$count = $count + 1;
+			echo '<tr><td align="center"><input type="checkbox" id="case'.$count.' name="case'.$count.'" value="'.$item["wishListId"].'"/></td>';
+			echo '<td>'.$row['name'].'</td>';
+			echo '<td>$'.$row['price'].'</td>';
+			echo '<td>'.$item["dateAdded"].'</td>';
+			echo '</tr>';
+		}
 	}
 
 echo <<<END
@@ -62,6 +68,6 @@ END;
 //----Main----
 $conn = get_MYSQLi_Connection();
 $wishlist_items = get_wishlist($conn, get_userId());
-create_form($wishlist_items);
+create_form($wishlist_items, $conn);
 
 ?>
