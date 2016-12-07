@@ -90,12 +90,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/account.php',
             controller: 'accountController'
         })
-        .state('purchases', {
-            url: '/purchases',
-            templateUrl: 'partials/purchases.html'
-        });
-
-    /*// nested list with custom controller
+		.state('purchases', {
+			url: '/purchases',
+			templateUrl: 'partials/purchase.php',
+			controller: 'purchaseController'
+		});
+        
+		/*// nested list with custom controller
         .state('home.list', {
             url: '/list',
             templateUrl: 'partials/home-list.html',
