@@ -19,10 +19,10 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="item in items">
-					<td><input type="text" ng-model="item.name"></td>
-					<td><input type="text" ng-model="item.description"></td>
-					<td><input type="number" min="0" ng-model="item.stock"></td>
-					<td><input type="text" ng-model="item.price"></td>
+					<td><input type="text" class="form-control" ng-model="item.name"></td>
+					<td><input type="text" class="form-control" ng-model="item.description"></td>
+					<td><input type="number" class="form-control" min="0" ng-model="item.stock"></td>
+					<td><input type="text" class="form-control" ng-model="item.price"></td>
 					<td><a ng-click="updateItem(item)" ui-sref="admin"><i class="fa fa-check" aria-hidden="true"></a></i></td>
 					</tr>
 				</tbody>

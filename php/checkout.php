@@ -1,5 +1,5 @@
 <?php 
-include_once("db.php");
+require_once("db.php");
 
 if(isset($_SESSION['userId']) && $_SESSION['userId'])
     {
@@ -13,6 +13,7 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'])
         $inputBillingName = "";
         $inputCardNumber = "";
         $inputSecurityCode = "";
+        $inputCart = "";
         //Shipping Info
         if(isset($_POST["inputFirstName"]) )
         {
@@ -69,10 +70,10 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'])
             $itemQuantity = (int) $item["quantity"];
             $itemNewStock = ((int) $item["stock"]) - $itemQuantity;
 
-            echo $itemId."<br>";
-            echo $itemPrice."<br>";
-            echo $itemQuantity."<br>";
-            echo $itemNewStock."<br>";
+            //echo $itemId."<br>";
+            //echo $itemPrice."<br>";
+            //echo $itemQuantity."<br>";
+            //echo $itemNewStock."<br>";
 
             $item_query = $conn->prepare("update Item set stock = ? where itemId = ?");
             $item_query->bind_param("ii", $itemNewStock, $itemId);

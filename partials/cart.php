@@ -17,7 +17,7 @@
       <td><a ng-click="removeItem(item)" ui-sref="cart"><i class="fa fa-trash" aria-hidden="true"></a></i></td>
       <td>{{item.name}}</td>
       <td style="width:15%;"><input type="number" min="1" ng-model="item.quantity" ng-change="updateCart(cart)" class="form-control"></td>
-      <td>{{item.quantity*item.price}}</td>
+      <td>${{item.quantity*item.price}}</td>
     </tr>
   </tbody>
 </table> 
@@ -28,7 +28,7 @@
     <h3 class="panel-title">Checkout</h3>
   </div>
   <div class="panel-body">
-    <h4>Total: {{total()}}</h4>
+    <h4>Total: ${{total()}}</h4>
     <?php 
       if(isset($_SESSION['userId']) && $_SESSION['userId']):
 		?>
