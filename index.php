@@ -1,5 +1,6 @@
 <?php
 	require_once("php/login.php");
+	require_once("php/account.php");
 	require_once("php/checkout.php");
 ?>
 	<!DOCTYPE html>
@@ -22,7 +23,8 @@
 		<script src="js/ui-bootstrap-2.3.0.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.js"></script>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-		<script src="js/js.cookie.js"></script>
+		<script src="js/angular-base64-upload.min.js"></script>
+
 		<script src="js/app.js"></script>
 		<script src="js/home.controller.js"></script>
 		<script src="js/search.controller.js"></script>
@@ -30,8 +32,10 @@
 		<script src="js/register.controller.js"></script>
 		<script src="js/cart.controller.js"></script>
 		<script src="js/admin.controller.js"></script>
+		<script src="js/additem.controller.js"></script>
 		<script src="js/products.controller.js"></script>
 		<script src="js/account.controller.js"></script>
+		<script src="js/account.validation.js"></script>
 		<script src="js/purchase.controller.js"></script>
 		<script src="js/checkout.controller.js"></script>
 		<script src="js/wishlist.controller.js"></script>
@@ -60,10 +64,6 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<!-- Will add a conditional item here that will determine whether or not they are logged in, if so, will show diff buttons.-->
-					<?php 
-						//echo($_SESSION['username']); 
-					?>
 					<?php 
 				    if(isset($_SESSION['userId']) && $_SESSION['userId']):
 					?>
@@ -77,19 +77,12 @@
 								<li><a href="php/login.php?logout=true">Logout</a></li>
 							</ul>
 						</li>
-						<!-- MY account:
-					Manage
-					Wishlist
-					Purchase History
-					Logout
-				-->
-						<li><a ui-sref="account">My Account</a></li>
 					<?php else: ?>
 						<li><a ui-sref="login">Login</a></li>
 						<li><a ui-sref="register">Register</a></li>
 					<?php endif ?>
 					
-					<li><a ui-sref="checkout">Checkout</a></li>
+					<li><a ui-sref="cart">Cart</a></li>
 					
 					<?php 
 				    if(isset($_SESSION['userLevel']) && $_SESSION['userLevel']>=1):
@@ -110,7 +103,6 @@
 		<!-- MAIN CONTENT -->
 		<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
 		<div class="container">
-
 			<div ui-view></div>
 		</div>
 	</body>

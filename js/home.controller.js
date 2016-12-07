@@ -7,7 +7,7 @@ routerApp.controller('homeController', function($scope) {
 			$scope.$apply(function(){
 				$scope.items = data;
 			});
-			console.info(data);
+			//console.info(data);
 		}
 	});	
 });
