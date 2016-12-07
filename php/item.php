@@ -45,14 +45,14 @@ function insertExampleItem(){
     $result = $conn->exec($sql);
 }
 
-function addItem($name, $description, $price, $stock, $iamge){
+function addItem($name, $description, $price, $stock, $image){
     $conn = get_Connection();
     $stmt = $conn->prepare("INSERT INTO item (name, description, price, stock, image) VALUES (:name, :description, :price, :stock, :image);");
     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
     $stmt->bindParam(":description", $description, PDO::PARAM_STR);
     $stmt->bindParam(":price", $price);
     $stmt->bindParam(":stock", $stock, PDO::PARAM_INT);
-    $stmt->bindParam(":image", $image);
+    $stmt->bindParam(":image", $image, PDO::PARAM_LOB);
 
   
     $result = $stmt->execute();
