@@ -82,7 +82,7 @@
 						<li><a ui-sref="register">Register</a></li>
 					<?php endif ?>
 					
-					<li><a ui-sref="checkout">Checkout</a></li>
+					<li><a ui-sref="cart">Cart</a></li>
 					
 					<?php 
 				    if(isset($_SESSION['userLevel']) && $_SESSION['userLevel']>=1):

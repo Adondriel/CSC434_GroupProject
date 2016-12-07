@@ -16,7 +16,7 @@
     <tr ng-repeat="item in cart">
       <td><a ng-click="removeItem(item)" ui-sref="cart"><i class="fa fa-trash" aria-hidden="true"></a></i></td>
       <td>{{item.name}}</td>
-      <td><input type="number" min="1" ng-model="item.quantity" ng-change="updateCart(cart)"></td>
+      <td style="width:15%;"><input type="number" min="1" ng-model="item.quantity" ng-change="updateCart(cart)" class="form-control"></td>
       <td>{{item.quantity*item.price}}</td>
     </tr>
   </tbody>
