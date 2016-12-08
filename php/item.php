@@ -33,6 +33,7 @@ function updateItem($itemId, $name, $description, $stock, $price){
 }
 
 function addItem($name, $description, $price, $stock, $image){
+     //sanitization is done by PDO here,only executed by admin users.
     $conn = get_Connection();
     $stmt = $conn->prepare("INSERT INTO Item (name, description, price, stock, image) VALUES (:name, :description, :price, :stock, :image);");
     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
@@ -86,6 +87,7 @@ if(isset($_POST['func']) && $_POST['func']=="updateItem"){
     }
 }
 
+//Recieve a post and 
 if(isset($_POST['func']) && $_POST['func']=="addItem"){
 	//all form data is directly in the "$_POST['item']" object, image data is in the format of:
 	//image =   {
