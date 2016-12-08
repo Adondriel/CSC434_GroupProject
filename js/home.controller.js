@@ -6,9 +6,9 @@ routerApp.controller('homeController', function($scope) {
 		success: function(data){
 			$scope.$apply(function(){
 				var newData = [];
+				newData.push(data[0]);
 				newData.push(data[1]);
 				newData.push(data[2]);
-				newData.push(data[3]);
 				$scope.items = newData;
 			});
 			//console.info(data);
