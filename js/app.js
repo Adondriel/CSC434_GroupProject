@@ -38,6 +38,11 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('item', {
+            url: '/item/:itemId',
+            templateUrl: 'partials/item.html',
+            controller: 'itemController'
+        })
         .state('login', {
             url: '/login',
             templateUrl: 'partials/login.php',
@@ -45,8 +50,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('register', {
             url: '/register',
-            templateUrl: 'partials/register.php',
-            controller: 'registerController'
+            templateUrl: 'partials/register.php'
         })
         .state('cart', {
             url: '/cart',

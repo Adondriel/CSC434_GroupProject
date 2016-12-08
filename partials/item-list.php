@@ -10,7 +10,7 @@
 	<div class="col-md-12">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">{{item.name}}
+				<h3 ui-sref="item({itemId: item.itemId})" class="panel-title">{{item.name}}
 					<bdi class="panel-title" style="float: right;"> ${{item.price}}</bdi>
 				</h3>
 			</div>

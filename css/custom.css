@@ -1,0 +1,58 @@
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   left: 2px; 
+   color: teal;
+}
+/*
+Custom css, below here.
+Written by Adam Pine
+*/
+/*To allow angular to determine which stars are filled in or not.*/
+.rating > span.filled:before{
+	content: "\2605";
+   position: absolute;
+   left: 2px; 
+   color: teal;
+}
+
+.rating > span.filled{
+   color: transparent;
+}
+/*These are for the comment stars, because those stars are not able to be changed, so we do not want hover events on them.*/
+.rating-fixed {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+.rating-fixed > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.rating-fixed > span.filled{
+	color: transparent;
+}
+
+.rating-fixed > span.filled:before{
+	content: "\2605";
+   position: absolute;
+   left: 2px; 
+   color: teal;
+}

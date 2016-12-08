@@ -4,24 +4,23 @@ require_once("login.php");
 //return all items from DB.
 function getAllItems(){
     $conn = get_Connection();
-    $sql = "SELECT * FROM Item";
-    
-    $stmt = $conn->query($sql);
-    
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    
-    
+    $sql = "SELECT * FROM Item";    
+    $stmt = $conn->query($sql);    
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);    
     return $result;
 }
 
 function getItemByID($id){
     //return the specific item, with this specific ID.
-    
-    
+    $conn = get_Connection();
+    $sql = "SELECT * FROM Item where itemId=$id";    
+    $stmt = $conn->query($sql);    
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);   
+    return $result;    
 }
 
 function updateItem($itemId, $name, $description, $stock, $price){
+    //string sanitization is done by PDO here, at least in terms of sql injection, and this is only executed by admin users.
     $conn = get_Connection();
     $stmt = $conn->prepare("UPDATE Item SET name=:name, description=:description, stock=:stock, price=:price WHERE itemId=:itemId");
     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
@@ -33,21 +32,9 @@ function updateItem($itemId, $name, $description, $stock, $price){
     $result = $stmt->execute();
 }
 
-function insertExampleItem(){
-    $conn = get_Connection();
-    $sql = "INSERT INTO Item(name, description, price, stock, image) VALUES
-    ('Item 1',
-    'description1',
-    25.52,
-    50,
-    null
-    );";
-    $result = $conn->exec($sql);
-}
-
 function addItem($name, $description, $price, $stock, $image){
     $conn = get_Connection();
-    $stmt = $conn->prepare("INSERT INTO item (name, description, price, stock, image) VALUES (:name, :description, :price, :stock, :image);");
+    $stmt = $conn->prepare("INSERT INTO Item (name, description, price, stock, image) VALUES (:name, :description, :price, :stock, :image);");
     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
     $stmt->bindParam(":description", $description, PDO::PARAM_STR);
     $stmt->bindParam(":price", $price);
@@ -55,6 +42,26 @@ function addItem($name, $description, $price, $stock, $image){
     $stmt->bindParam(":image", $image, PDO::PARAM_LOB);
 
   
+    $result = $stmt->execute();
+}
+
+function getRatings($itemId){
+    $conn = get_Connection();
+    $sql = "SELECT R.ratingId, R.userId, R.itemId, R.rating, R.`comment`, U.userName FROM Rating AS R INNER JOIN User AS U ON U.userId=R.userId WHERE itemId=:itemId";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function addRating($userId, $itemId, $rating, $comment){
+    $conn = get_Connection();
+    $sql = "INSERT INTO Rating(userId, itemId, rating, comment) VALUES (:userId, :itemId, :rating, :comment)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
+    $stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
+    $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
     $result = $stmt->execute();
 }
 
@@ -93,17 +100,39 @@ if(isset($_POST['func']) && $_POST['func']=="addItem"){
 	//Be careful if you upload a file file >2mb, it will freeze chrome dev tools if you try to look at the output of the line below.
 	//Eventually it will come back, but it is very very slow to display the info.
 	
-	print_r($_POST['item']);
+	//print_r($_POST['item']);
 
     $item = $_POST['item'];
     
-    $name = $item['txtItemName'];
-    $desc = $item['txtDesc'];
-    $stock = $item['numStock'];
-    $price = $item['txtPrice'];
+    $name = filter_var($item['txtItemName'], FILTER_SANITIZE_STRING);
+    $desc = filter_var($item['txtDesc'], FILTER_SANITIZE_STRING);
+    $stock = filter_var($item['numStock'], FILTER_SANITIZE_NUMBER_INT) ;
+    $price = filter_var($item['txtPrice'], FILTER_SANITIZE_NUMBER_FLOAT);
     $image = $_POST['item']['image']['base64'];
     
     if(isset($_SESSION['userId']) && $_SESSION['userId'] && $_SESSION['userLevel'] >= 1){
         addItem($name, $desc, $stock, $price, $image);
     }
 }
+
+if(isset($_POST['func']) && $_POST['func']=="getItemById"){
+    $id = filter_var($_POST['itemId'], FILTER_SANITIZE_NUMBER_INT);
+    echo(json_encode(getItemByID($id), JSON_NUMERIC_CHECK));
+}
+
+
+if(isset($_POST['func']) && $_POST['func']=="getRatings"){
+    $itemId = filter_var($_POST['itemId'], FILTER_SANITIZE_NUMBER_INT);
+    echo(json_encode(getRatings($itemId)));
+}
+
+if(isset($_POST['func']) && $_POST['func']=="submitRating"){
+    if(isset($_SESSION['userId']) && $_SESSION['userId']){
+        $userId = $_SESSION['userId'];
+        $itemId = filter_var($_POST['itemId'], FILTER_SANITIZE_NUMBER_INT);
+        $rating = filter_var($_POST['rating'], FILTER_SANITIZE_NUMBER_INT);
+        $comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+        addRating($userId, $itemId, $rating, $comment);
+    }
+}
+?>

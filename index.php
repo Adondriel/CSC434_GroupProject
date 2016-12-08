@@ -10,6 +10,7 @@
 		<!-- CSS (load bootstrap) -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/custom.css">
 
 		<style>
 			.navbar {
@@ -27,8 +28,7 @@
 		<script src="js/app.js"></script>
 		<script src="js/home.controller.js"></script>
 		<script src="js/search.controller.js"></script>
-		<script src="js/login.controller.js"></script>
-		<script src="js/register.controller.js"></script>
+		<script src="js/item.controller.js"></script>
 		<script src="js/cart.controller.js"></script>
 		<script src="js/admin.controller.js"></script>
 		<script src="js/additem.controller.js"></script>

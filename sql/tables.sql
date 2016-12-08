@@ -27,7 +27,7 @@ CREATE TABLE `Rating` (
   `ratingId` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
   `itemId` int(11) NOT NULL,
-  `rating` double(2,2) NOT NULL,
+  `rating` tinyint UNSIGNED NOT NULL,
   `comment` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`ratingId`),
   KEY `userId` (`userId`),
@@ -48,8 +48,11 @@ CREATE TABLE `User` (
   UNIQUE KEY `userName_UNIQUE` (`userName`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*user: adondriel pass:testing*/
-INSERT INTO `User` VALUES (1,'adondrielcraft@gmail.com','ae2b1fca515949e5d54fb22b8ed95575',NULL,NULL,NULL,0,'adondriel');
+/*user: testUser pass:testing*/
+/*user: testAdmin pass:testing*/
+
+INSERT INTO `User` VALUES (1,'testUser@example.com','ae2b1fca515949e5d54fb22b8ed95575',NULL,NULL,NULL,0,'testUser');
+INSERT INTO `User` VALUES (2,'testAdmin@example.com','ae2b1fca515949e5d54fb22b8ed95575',NULL,NULL,NULL,1,'testAdmin');
 
 
 DROP TABLE IF EXISTS `Wishlist`;

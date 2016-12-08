@@ -1,0 +1,82 @@
+<div class="col-md-1">
+
+</div>
+<!-- Image
+	name
+	desc
+	cart/wishlistbuttons
+	ratings/comments -->
+<div class="col-md-10">
+	<img ng-show="item.image===null" src="assets/ph.svg" class="img-responsive center-block">
+	<img ng-show="item.image!==null" data-ng-src="data:image/png;base64, {{item.image}}" class="img-responsive center-block">
+</div>
+<div class="col-md-10">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{item.name}}
+				<bdi class="panel-title" style="float: right;"> ${{item.price}}</bdi>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<p>{{item.description}}</p>
+			<div class="col-md-6" style="padding-left: 0px;" ng-controller="cartController">
+				<a ng-click="addItemToCart(item)" class="btn btn-primary">Add to Cart</a>
+			</div>
+		</div>
+	</div>
+	<!-- Check if they a logged in-->
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Create Rating
+				<bdi class="panel-title" style="float: right;">
+					<div class="rating">
+						<span ng-click="rating=5" ng-class="[{filled: rating>=5}]">☆</span>
+						<span ng-click="rating=4" ng-class="[{filled: rating>=4}]">☆</span>
+						<span ng-click="rating=3" ng-class="[{filled: rating>=3}]">☆</span>
+						<span ng-click="rating=2" ng-class="[{filled: rating>=2}]">☆</span>
+						<span ng-click="rating=1" ng-class="[{filled: rating>=1}]">☆</span>
+					</div>
+				</bdi>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group col-md-12">
+				<textarea ng-model="comment" class="form-control" style="height:250px;">
+				</textarea>
+			</div>
+
+			<div class="form-group col-md-6" style="padding-left: 0px;">
+				<a ng-click="submitRating()" class="btn btn-primary">Submit Rating</a>
+			</div>
+		</div>
+	</div>
+	<!--End logged in section-->
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Ratings</h3>
+		</div>
+		<div class="panel-body">
+			<div class="panel panel-primary" ng-repeat="r in ratings">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{r.userName}}
+						<bdi class="panel-title" style="float: right;">
+							<div class="rating-fixed">
+								<span ng-class="[{filled: r.rating>=5}]">☆</span>
+								<span ng-class="[{filled: r.rating>=4}]">☆</span>
+								<span ng-class="[{filled: r.rating>=3}]">☆</span>
+								<span ng-class="[{filled: r.rating>=2}]">☆</span>
+								<span ng-class="[{filled: r.rating>=1}]">☆</span>
+							</div>
+						</bdi>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<p>{{r.comment}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-1">
+
+</div>
