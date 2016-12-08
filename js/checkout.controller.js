@@ -7,6 +7,7 @@ routerApp.controller('checkoutController', function($scope) {
         $.ajax({
             url: 'php/checkout.php',
             type: 'POST',
+            dataType: 'json',
             data: this.formData, // data to be submitted
             success: function(response) {
                 //alert(response); // do what you like with the response

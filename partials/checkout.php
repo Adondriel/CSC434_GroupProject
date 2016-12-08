@@ -1,10 +1,9 @@
 <?php 
     require_once("../php/login.php");
-    require_once("../php/checkout.php")
 ?>
 
 <!-- Both Shipping and Billing form -->
-<form id="checkout_form" name="checkout_form" class="form-horizontal" method="post" ng-submit="submit($event, this)" >
+<form id="checkout_form" name="checkout_form" class="form-horizontal" ng-submit="submit($event, this)" >
         <legend>Shipping Information</legend>
         <div class="form-group">
           <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>

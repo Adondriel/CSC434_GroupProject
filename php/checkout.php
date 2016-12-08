@@ -1,8 +1,9 @@
 <?php 
+require_once("login.php");
 require_once("db.php");
 
-if(isset($_SESSION['userId']) && $_SESSION['userId'])
-    {
+if(isset($_SESSION['userId']) && $_SESSION['userId']){
+    //var_dump($_POST["cart"]);
         $inputFirstName = "";
         $inputLastName = "";
         $inputAddressLine1 = "";
@@ -61,14 +62,19 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'])
         {
             $inputCart = $_POST["cart"];
         }
+
+
+
+        
         $userId = (int) $_SESSION["userId"]; 
         $conn = get_MYSQLi_Connection();
-        foreach($inputCart as $item)
+
+        for($i = 0; $i < count($inputCart); $i++)
         {
-            $itemId = (int) $item["itemId"];
-            $itemPrice = (double) $item["price"];
-            $itemQuantity = (int) $item["quantity"];
-            $itemNewStock = ((int) $item["stock"]) - $itemQuantity;
+            $itemId = (int) $inputCart[$i]["itemId"];
+            $itemPrice = (double) $inputCart[$i]["price"];
+            $itemQuantity = (int) $inputCart[$i]["quantity"];
+            $itemNewStock = ((int) $inputCart[$i]["stock"]) - $itemQuantity;
 
             //echo $itemId."<br>";
             //echo $itemPrice."<br>";

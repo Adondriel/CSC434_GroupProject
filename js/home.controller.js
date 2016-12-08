@@ -5,7 +5,11 @@ routerApp.controller('homeController', function($scope) {
 		dataType: 'json',
 		success: function(data){
 			$scope.$apply(function(){
-				$scope.items = data;
+				var newData = [];
+				newData.push(data[1]);
+				newData.push(data[2]);
+				newData.push(data[3]);
+				$scope.items = newData;
 			});
 			//console.info(data);
 		}
