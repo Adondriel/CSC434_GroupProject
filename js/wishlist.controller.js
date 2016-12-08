@@ -6,7 +6,7 @@ routerApp.controller('wishlistController', function($scope) {
         dataType: 'json',
         success: function(data) {
             $scope.$apply(function() {
-                console.info(data);
+                //console.info(data);
                 $scope.wishlist = data
             });
         }
@@ -41,7 +41,7 @@ routerApp.controller('wishlistController', function($scope) {
                     dataType: 'json',
                     success: function(data) {
                         $scope.$apply(function() {
-                            console.info(data);
+                            //console.info(data);
                             $scope.wishlist = data
                         });
                     }

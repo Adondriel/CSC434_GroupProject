@@ -1,4 +1,8 @@
-<form action="" method="post">
+<div class="col-lg-3">
+</div>
+
+<div class="col-lg-6">
+<form class="form-horizontal" action="" method="post">
 <h1>Not a member yet? Sign Up!</h1>
 
 <?php
@@ -18,12 +22,32 @@ if(isset($_SESSION['msg']['reg-success']) && $_SESSION['msg']['reg-success'])
 }
 
 ?>
+<div class="form-group">
+	<label class="col-lg-2 control-label" for="username">Username:</label>
+	<div class="col-lg-10">
+		<input class="form-control" type="text" name="username" id="username" placeholder="username" value="" size="23" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="col-lg-2 control-label" for="email">Email:</label>
+	<div class="col-lg-10">
+		<input class="form-control" type="text" name="email" id="email" placeholder="email@example.com" size="23" />
+	</div>
+</div>
+<div class="form-group">
+	<label class="col-lg-2 control-label" for="password">Password:</label>
+	<div class="col-lg-10">
+		<input class="form-control" type="text" name="password" id="password" placeholder="password" size="23" />
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-lg-10 col-lg-offset-2">
+		<input type="submit" name="submit" value="Register" class="btn btn-primary" />
+	</div>
+</div>
 
-<label class="grey" for="username">Username:</label>
-<input class="field" type="text" name="username" id="username" value="" size="23" />
-<label class="grey" for="email">Email:</label>
-<input class="field" type="text" name="email" id="email" size="23" />
-<label class="grey" for="password">Password:</label>
-<input class="field" type="text" name="password" id="password" size="23" />
-<input type="submit" name="submit" value="Register" class="bt_register" />
 </form>
+</div>
+<div class="col-lg-3">
+</div>
+

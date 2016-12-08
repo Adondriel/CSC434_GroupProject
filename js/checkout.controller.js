@@ -3,7 +3,7 @@ routerApp.controller('checkoutController', function($scope) {
 
     $scope.submit = function(event, form) {
         this.formData.cart = JSON.parse(localStorage.getItem('cart'));
-        console.info(this.formData);
+        //console.info(this.formData);
         $.ajax({
             url: 'php/checkout.php',
             type: 'POST',

@@ -16,4 +16,12 @@ routerApp.controller('searchController', function($scope, $state, $stateParams, 
 			});
 		}
 	});	
+
+	$scope.keypressed = function(e){
+		if (e.which === 13){
+			console.info(e);
+			console.info(this.searchTerm);
+			$state.go('search', {searchTerm: this.searchTerm})
+		}
+	}
 });

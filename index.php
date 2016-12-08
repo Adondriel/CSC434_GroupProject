@@ -52,10 +52,10 @@
 	<body ng-app="routerApp">
 
 		<!-- NAVIGATION -->
-		<nav ng-controller="loginController" class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" ui-sref="#">eCommerce</a>
+					<a class="navbar-brand" ui-sref="/">eCommerce</a>
 				</div>
 				<ul class="nav navbar-nav">
 					<li><a ui-sref="/">Home</a></li>
@@ -90,11 +90,11 @@
 					<?php endif ?>
 
 				</ul>
-				<div class="navbar-form navbar-right">
+				<div class="navbar-form navbar-right" ng-controller="searchController">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
+						<input type="text" class="form-control" placeholder="Search" ng-model="searchTerm" ng-keypress="keypressed($event)">
 					</div>
-					<button type="button" class="btn btn-default" ui-sref="search({searchTerm: searchTerm})">Submit</button>
+					<button id="btnSearch" type="button" class="btn btn-default" ui-sref="search({searchTerm: searchTerm})">Submit</button>
 				</div>
 			</div>
 		</nav>

@@ -54,7 +54,7 @@ routerApp.controller('cartController', function($scope) {
         for (var i = 0; i < this.wishlist.length; i++) {
             this.addItemToCart(this.wishlist[i]);
         }
-        console.info(this.cart);
+        //console.info(this.cart);
     }
 
     $scope.updateCart = function(localCart) {

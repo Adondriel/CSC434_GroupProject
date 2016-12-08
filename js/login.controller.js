@@ -1,7 +1,9 @@
 routerApp.controller('loginController', function($scope) { 
-/*	$scope.loginStatus = function(){
-		return checkLoginStatus();
-	}*/
-	//console.info(checkLoginStatus());
-	//console.info($scope.loginStatus());
+	$scope.keypressed = function(e){
+		console.info(e);
+		console.info(this.searchTerm);
+		if (e.which === 13){
+
+		}
+	}
 });

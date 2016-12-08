@@ -16,13 +16,11 @@ function get_wishlist()
 	if($userId > 0){
 		$conn = get_Connection();
 		//gets list of items, with the item information.
-		$sql = "SELECT * FROM Wishlist INNER JOIN item ON wishlist.itemId=item.itemId where userId = $userId";
+		$sql = "SELECT * FROM Wishlist INNER JOIN Item ON Wishlist.itemId=Item.itemId where userId = $userId";
 		$stmt = $conn->query($sql);
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		return $result;
-	}else{
-		header("Location: #");
 	}
 }
 
@@ -31,11 +29,9 @@ function removeItemFromWishlist($wishlistId){
 	if($userId > 0){
 		$conn = get_Connection();
 		//gets list of items, with the item information.
-		$sql = "DELETE FROM Wishlist WHERE wishlistId=$wishlistId";
+		$sql = "DELETE FROM Wishlist WHERE WishlistId=$wishlistId";
 		$result = $conn->exec($sql);
 		return $result;
-	}else{
-		header("Location: #");
 	}
 }
 
@@ -48,8 +44,6 @@ function addItemToWishlist($itemId){
 		$sql = "INSERT INTO Wishlist(userId, itemId, dateAdded) VALUES ($userId, $itemId, now())";
 		$result = $conn->exec($sql);
 		return $result;
-	}else{
-		header("Location: #");
 	}
 }
 
